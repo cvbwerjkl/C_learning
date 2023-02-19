@@ -1,2 +1,9 @@
-void print_array(int * array);
-void sort_array(int * array);
+#ifndef FUNC_H_
+#define FUNC_H_
+
+#include <inttypes.h>
+#include <stddef.h>
+void print_array(int32_t* array, size_t array_size);
+void sort_array(int32_t* array, size_t array_size);
+
+#endif /* FUNC_H_ */
