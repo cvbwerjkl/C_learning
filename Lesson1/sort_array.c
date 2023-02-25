@@ -4,6 +4,7 @@ void swap(int32_t* a, int32_t* b);
 
 
 void sort_array(int32_t* array, size_t array_size) {
+
 	size_t i;
 	size_t k;
 	
@@ -17,6 +18,7 @@ void sort_array(int32_t* array, size_t array_size) {
 }
 
 void swap(int32_t* a, int32_t* b) {
+	
 	int32_t tmp = *a;
 
 	*a = *b;
