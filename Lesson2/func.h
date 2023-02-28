@@ -18,10 +18,12 @@ int8_t strcmp(const char* str1, const char* str2);
 
 /*
  * strchr: Returns a pointer to the first occurrence of character in the C string str.
- * The terminating null-character is considered part of the C string. Therefore, it can also be located in order to retrieve a pointer to the end of a string.
- * Return Value - pointer to the first occurrence of character in str. If the character is not found, the function returns a null pointer.
+ * Parameters: 
+ *  str - C string.
+ *  character - character to be located.
+ * Return Value - pointer to the first occurrence of character in str. If the character is not found, the function returns a pointer to the end of a string.
 */
-const char* strchr (const char* str, int character );
+const char* strchr (const char* str, char character );
 
 /*
  * strcpy: Copies the C string pointed by source into the array pointed by destination, including the terminating null character (and stopping at that point).
