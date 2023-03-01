@@ -10,6 +10,10 @@ int main() {
     printf("Test strcpy:\n %s\n", str1);
 
     /*strcmp function test*/
+    char str4[] = "ae";
+    char str5[] = "tes";
+
+    printf("Test strcmp:\n %d\n", strcmp(&str4, &str5));
 
     /*strchr function test*/
     char character;
