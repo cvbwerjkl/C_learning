@@ -1,21 +1,19 @@
 #include "func.h"
 
 char* strcpy (char* destination, const char* source ) {
-    size_t source_size;
     size_t i;
+    char* output;
     
-    source_size = sizeof(source) / sizeof(char);
-    
+    /*Save beggining ponter of distanation*/
+    output = destination;
+              
      /*Copy source to distanation*/
     *destination = *source;
-    for (i = 0; i < source_size; ++i) {
+    while (*source != '\0') {
         ++destination;
         ++source;
         *destination = *source;
     }
 
-    /*Return pointer to the beginning*/
-    destination -= source_size;
-    
-    return destination;
+    return output;
 }
