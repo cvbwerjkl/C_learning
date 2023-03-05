@@ -1,7 +1,6 @@
 #include "func.h"
 
 int8_t strcmp(const char* str1, const char* str2) {
-
     /*Check if both C strings are empty*/ 
     if (*str1 == '\0' && *str2 == '\0') return 0;
 

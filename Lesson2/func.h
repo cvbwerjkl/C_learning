@@ -14,7 +14,7 @@
  *  0	the contents of both strings are equal
  *  -1	the first character that does not match has a greater value in str1 than in str2
 */
-int8_t strcmp(const char* str1, const char* str2);
+int8_t strcmp (const char* str1, const char* str2);
 
 /*
  * strchr: Returns a pointer to the first occurrence of character in the C string str.
@@ -23,7 +23,7 @@ int8_t strcmp(const char* str1, const char* str2);
  *  character - character to be located.
  * Return Value - pointer to the first occurrence of character in str. If the character is not found, the function returns a pointer to the end of a string.
 */
-const char* strchr (const char* str, char character );
+const char* strchr (const char* str, char character);
 
 /*
  * strcpy: Copies the C string pointed by source into the array pointed by destination, including the terminating null character (and stopping at that point).
@@ -33,6 +33,6 @@ const char* strchr (const char* str, char character );
  *  source - C string to be copied.
  * Return value - destination is returned.
 */
-char* strcpy ( char* destination, const char* source );
+char* strcpy (char* destination, const char* source);
 
 #endif /* FUNC_H_ */

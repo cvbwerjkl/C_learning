@@ -1,7 +1,6 @@
 #include "func.h"
 
 char* strcpy (char* destination, const char* source ) {
-    size_t i;
     char* output;
     
     /*Save beggining ponter of distanation*/
