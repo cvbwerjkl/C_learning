@@ -7,7 +7,7 @@ int main () {
    double b[3] = {1, 5, 6};
    double dot_product;
 
-   dot_product = cblas_ddot(3, a,1, b, 1);
+   dot_product = cblas_ddot(3, a, 1, b, 1);
 
    printf ("Result is %f\n", dot_product);
    
