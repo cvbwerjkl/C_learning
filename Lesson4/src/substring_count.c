@@ -14,6 +14,7 @@ int32_t substring_count (char* mainstring, char* substring) {
         if (*substring == '\0') {
             substring -= j;
             ++i;
+            j = 0;
         }
         else if (*mainstring == *substring) {
             ++mainstring;
@@ -23,6 +24,7 @@ int32_t substring_count (char* mainstring, char* substring) {
         else {
             substring -= j;
             ++mainstring;
+            j = 0;
         }
     }
 
