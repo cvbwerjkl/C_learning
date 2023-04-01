@@ -7,8 +7,8 @@ int32_t substring_count (char* mainstring, char* substring) {
     i = 0;
     j = 0;
 
-    /*check for not emty of mainstring and substring*/
-    if (*mainstring == '\0' || *substring == '\0') return i;
+    /*check for not emty of substring*/
+    if (*substring == '\0') return i;
 
     while (*mainstring != '\0') {
         if (*substring == '\0') {
