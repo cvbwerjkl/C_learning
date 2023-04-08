@@ -6,8 +6,8 @@
 #include <stddef.h>
 
 /*
- * counting amount of substring in mainstring
+ *counting amount of substring in mainstring located between two spaces
 */
-int32_t substring_count (char* mainstring, char* substring);
+int32_t substring_count(const char* mainstring, const char* substring);
 
 #endif /* FUNC_H_ */

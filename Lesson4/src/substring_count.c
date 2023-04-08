@@ -1,22 +1,25 @@
 #include "func.h"
 
-int32_t substring_count (char* mainstring, char* substring) {
-    int32_t i;
+int32_t substring_count(const char* mainstring, const char* substring) {
+    int32_t quantity;
+    int8_t flag;
     int32_t j;
 
-    i = 0;
+    quantity = 0;
+    flag = 0; // flag = 1 means that there is a space in the beggining of the substring
     j = 0;
 
-    /*check for not emty of substring*/
-    if (*substring == '\0') return i;
+
+    /*check for not emty of substring and mainstring*/
+    if (substring == NULL || mainstring == NULL || *substring == '\0') return quantity;
 
     while (*mainstring != '\0') {
-        if (*substring == '\0') {
+        if (*substring == '\0' && *mainstring == ' ') {
             substring -= j;
-            ++i;
+            ++quantity;
             j = 0;
         }
-        else if (*mainstring == *substring) {
+        else if (*mainstring == *substring && flag == 1) {
             ++mainstring;
             ++substring;
             ++j;
@@ -26,7 +29,10 @@ int32_t substring_count (char* mainstring, char* substring) {
             ++mainstring;
             j = 0;
         }
+        if (*mainstring == ' ' && j == 0) {
+            flag = 1; 
+        }
     }
 
-    return i;
+    return quantity;
 }
