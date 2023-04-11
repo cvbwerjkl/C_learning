@@ -10,16 +10,18 @@ int32_t substring_count(const char* mainstring, const char* substring) {
     int32_t quantity;
     int32_t substring_length;
 
-    begin_iter = NULL;
+    begin_iter = mainstring;
     end_iter = NULL;
 
     quantity = 0;
     substring_length = 0;
 
+    printf("%s \n", "OPTION 2 REALISATION");
+
     /*check for not emty of substring and mainstring*/
     if (substring == NULL || mainstring == NULL || *substring == '\0') return quantity;
 
-    /*substring length evaluation*/
+    /*substring length evaluation for substrings comparsion on next step*/
     while (*substring != '\0') {
         ++substring_length;
         ++substring;
@@ -28,21 +30,20 @@ int32_t substring_count(const char* mainstring, const char* substring) {
 
     /*check a length between two space in mainstring and if it's equal to substring length check for content equality*/
     while (*mainstring != '\0') {
-        if (*mainstring == ' ' && begin_iter == NULL) {
-            begin_iter = mainstring;
-            end_iter = NULL;
-        }
-        else if (*mainstring == ' ' && begin_iter != NULL) {
+        if (*mainstring == ' ') {
             end_iter = mainstring;
         }
         if (begin_iter != NULL && end_iter != NULL) {
-            if (end_iter - begin_iter == substring_length + 1) {
-                quantity += substring_equi_check(++begin_iter, substring);
+            if (end_iter - begin_iter == substring_length) {
+                quantity += substring_equi_check(begin_iter, substring);
             }
-            begin_iter = end_iter;
+            begin_iter = end_iter + 1;
             end_iter = NULL;
         }
         ++mainstring;
+    }
+    if (mainstring - begin_iter == substring_length) {
+        quantity += substring_equi_check(begin_iter, substring);
     }
 
     return quantity;

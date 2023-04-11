@@ -6,9 +6,10 @@ int32_t substring_count(const char* mainstring, const char* substring) {
     int32_t j;
 
     quantity = 0;
-    flag = 0; // flag = 1 means that there is a space in the beggining of the substring
+    flag = 1; // flag = 1 means that there is a space in the beggining of the substring
     j = 0;
 
+    printf("%s \n", "OPTION 1 REALISATION");
 
     /*check for not emty of substring and mainstring*/
     if (substring == NULL || mainstring == NULL || *substring == '\0') return quantity;
@@ -20,19 +21,22 @@ int32_t substring_count(const char* mainstring, const char* substring) {
             j = 0;
         }
         else if (*mainstring == *substring && flag == 1) {
-            ++mainstring;
             ++substring;
             ++j;
         }
         else {
             substring -= j;
-            ++mainstring;
             j = 0;
+            flag = 0;
         }
-        if (*mainstring == ' ' && j == 0) {
+        if (*mainstring == ' ') {
             flag = 1; 
         }
+        ++mainstring;
     }
+
+    /*additional if for checking equivalence at the end of the string*/
+    if (*substring == '\0') ++quantity;
 
     return quantity;
 }

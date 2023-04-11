@@ -21,12 +21,12 @@ int main() {
     char mainstring4[] = "    o";
     char substring4[] = "o";
 
-    test_f(mainstring4, substring4, 0, 4);
+    test_f(mainstring4, substring4, 1, 4);
 
     char mainstring5[] = "o    ";
     char substring5[] = "o";
 
-    test_f(mainstring5, substring5, 0, 5);
+    test_f(mainstring5, substring5, 1, 5);
 
     char mainstring6[] = " oo   ";
     char substring6[] = "o";
