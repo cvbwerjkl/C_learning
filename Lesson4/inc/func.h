@@ -10,4 +10,9 @@
 */
 int32_t substring_count(const char* mainstring, const char* substring);
 
+/*
+ *search for first substring location in mainstring located between parenthesis, return NULL if not found, else return pointer for the begining and end of substring
+*/
+void substring_search(const char* mainstring, char** substring_start, char** substring_end);
+
 #endif /* FUNC_H_ */

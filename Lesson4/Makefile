@@ -1,11 +1,11 @@
 WARNING = -Wall
 IMPL =
-SOURCES = main.c	
+SOURCES = main.c src/substring_search.c	
 
-ifeq ($(IMPL),1)
-	SOURCES += src/substring_count.c
-else
+ifeq ($(IMPL),2)
 	SOURCES += src/substring_count2.c
+else
+	SOURCES += src/substring_count.c
 endif
 
 all:		
