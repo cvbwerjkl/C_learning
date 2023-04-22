@@ -1,7 +1,15 @@
 #include "filo.h"
 
-int main() {
-    struct Item* Filo = NULL;
+struct Item* Filo = NULL;
 
+int main() {
+
+    char c = 'f';
+    push(c);
+  
+    char tmp;
+    if (pop(&tmp)) printf("%c\n", tmp);
+
+    return 0;
 }
 

@@ -4,16 +4,21 @@
 #include <stdio.h>
 #include <inttypes.h>
 #include <stddef.h>
+#include <stdlib.h>
+
+/*
+ stack realization with linked list implementation
+*/
 
 struct Item {
-    int data;
+    char data;
     struct Item* next;
 };
 
-uint8_t isEmpty(void);
-
+/*adding element at the end of stack*/
 void push(char c);
 
+/*extract last element from stack with check is stack is empty*/
 uint8_t pop(char* c);
 
 #endif /* FILO_H_ */
