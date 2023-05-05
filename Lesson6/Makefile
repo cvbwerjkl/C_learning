@@ -1,29 +1,64 @@
-SOURCES1 = fifo/pop.c \
-fifo/push.c \
-fifo/isEmpty.c 
+TARGET = my_prog
 
-SOURCES2 = tree/free_tree.c \
+BINDIR = bin
+OBJDIR = obj
+
+SOURCES = fifo/pop.c \
+fifo/push.c \
+fifo/isEmpty.c  \
+tree/free_tree.c \
 tree/print_tree.c \
 tree/add_left_leaf.c \
-tree/add_right_leaf.c
+tree/add_right_leaf.c \
+tree/root.c \
+tree/fill_tree.c
 
-SOURCES3 = tests/main.c
-
-SOURCES4 = main.c
-
-WARNING = -Wall
 INC1 = fifo
 INC2 = tree
 
-all:		
-	@gcc $(WARNING) -I$(INC1) -I$(INC2) $(SOURCES1) $(SOURCES2) $(SOURCES4) -o my_prog
-	@echo "Compiling done"
+ifeq ($(DEBUG), 1)
+	override CFLAGS:=-g $(CFLAGS)
+	override LDFLAGS:=-g $(LDFLAGS)
+endif
 
-test:		
-	@gcc $(WARNING) -I$(INC1) -I$(INC2) $(SOURCES1) $(SOURCES2) $(SOURCES3) -o tests/test
-	@echo "Compiling done"
+ifeq ($(TESTS), 1)
+	SOURCES += tests/main.c
+else
+	SOURCES += main.c
+endif
+
+WARNING = -Wall -Wextra -Wpedantic
+CFLAGS = -c
+LDFLAGS = 
+
+BUILDDIR = $(BINDIR)/$(OBJDIR)
+
+
+OBJECTS = $(addprefix $(BUILDDIR)/,$(patsubst %.c,%.o,$(notdir $(SOURCES))))
+vpath %.c $(sort $(dir $(SOURCES)))
+
+all: $(BUILDDIR) $(BINDIR)/$(TARGET)
+	@echo Compiling done
+
+$(BINDIR)/$(TARGET): $(OBJECTS)
+	@echo LD       $@
+	@gcc $(LDFLAGS) $(OBJECTS) -o $@ 
+
+$(BUILDDIR)/%.o: %.c
+	@echo CC       $^
+	@gcc $(CFLAGS) $(WARNING) -I$(INC1) -I$(INC2) $< -o $@ 
+
+$(BUILDDIR): $(BINDIR)
+	@mkdir $</$(OBJDIR)
+
+$(BINDIR):
+	@mkdir $@
 
 clean:
-	@rm -f tests/test
-	@rm -f my_prog
+	@rm -f $(BINDIR)/my_prog
+	@rm -f $(OBJECTS)
 	@echo "Cleaning done"
+
+print:
+	@echo $(OBJECTS)
+	@echo $(SOURCES)

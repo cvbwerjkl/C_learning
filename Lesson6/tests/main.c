@@ -18,28 +18,27 @@ int main() {
     printf("%c\n", Fifo_tail -> data);
     
     char tmp;
-    if (pop(Fifo_head, Fifo_tail, &tmp)) printf("%c\n", tmp);
-    
+    if (pop(Fifo_head, &Fifo_tail, &tmp)) printf("%c\n", tmp);
 
+    if (isEmpty(Fifo_head)) printf("Empty\n");
+    else printf("Not Empty\n");
+
+    char tmp2;
+    if (pop(Fifo_head, &Fifo_tail, &tmp2)) printf("%c\n", tmp2);
+    
+    printf("End queue test\n");
    
     /*tree tests*/
+
+    char s[] = "sklopjhgfhf";
     
-    struct Tree* Root = (struct Tree*)malloc(sizeof(struct Tree));
-    Root -> data = 's';
-    Root -> left = NULL;
-    Root -> right = NULL;
-
-    char a = 'a';
-
-    add_left_leaf(Root, a);
-
-    char b = 'b';
-
-    add_right_leaf(Root, b);
+    struct Tree* Root = root(s[0]);
 
     print_tree(Root);
 
     free_tree(Root);
+    
+    printf("End tree test\n");
         
     return 0;
 }

@@ -20,8 +20,11 @@ struct Item {
 /*adding element at the end of queue*/
 struct Item* push(struct Item* Fifo_tail, char c);
 
-/*extract first element from queue with check is queue empty*/
-uint8_t pop(struct Item* Fifo_head, struct Item* Fifo_tail, char* c);
+/*
+ extract first element from queue with check is queue empty
+ pointer on pointer Fifo_tail used for check is Fifo_tail == Filo -> next
+*/
+uint8_t pop(struct Item* Fifo_head, struct Item** Fifo_tail, char* c);
 
 /*check is queue empty*/
 uint8_t isEmpty(struct Item* Fifo_head);
