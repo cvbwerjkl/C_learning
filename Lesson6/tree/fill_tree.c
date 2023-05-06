@@ -7,14 +7,14 @@ void fill_tree(struct Tree* root, char c[]) {
     int32_t tmp2;
     int32_t i;
     size_t j;
-    struct Tree* tmp_leafs_array[128]; /*need to be replace by dynamic memory*/
-    struct Tree* tmp2_leafs_array[128]; /*need to be replace by dynamic memory*/
+    struct Tree** tmp_leafs_array;
+    struct Tree** tmp2_leafs_array;
     
-    c_array_size = 11;
+    c_array_size = sizeof(c) / sizeof(char);
     
     /*tree depth evaluation*/
     tmp1 = c_array_size - 1;
-    tmp2 = 2; // first tree level leafs amount
+    tmp2 = 2; // amount of leafs on a first tree level
     tree_depth = 0;
     while (tmp1 > 0) {
         tmp1 -= tmp2;
@@ -22,7 +22,11 @@ void fill_tree(struct Tree* root, char c[]) {
         ++tree_depth;
     }
 
-    printf("tree depth %ld\n", tree_depth);
+    /*arrays for tree filling level by level*/
+    tmp_leafs_array =  (struct Tree**)malloc(sizeof(struct Tree*) * (tmp2));
+    tmp2_leafs_array =  (struct Tree**)malloc(sizeof(struct Tree*) * (tmp2));
+
+    //printf("tree depth %ld\n", tree_depth);
 
     /*tree_filling*/
     tmp1 = 1;
@@ -35,7 +39,7 @@ void fill_tree(struct Tree* root, char c[]) {
             
             if (c[j] != '\0') {
                 add_left_leaf(tmp_leafs_array[i], c[j]);
-                printf("add leaft leaf %c on depth leavel %ld\n", tmp_leafs_array[i] -> left -> data, tree_depth);
+                //printf("add leaft leaf %c on depth leavel %ld\n", tmp_leafs_array[i] -> left -> data, tree_depth);
                 tmp2_leafs_array[tmp2] = tmp_leafs_array[i] -> left;
                 ++tmp2;
                 ++j;
@@ -44,7 +48,7 @@ void fill_tree(struct Tree* root, char c[]) {
 
             if (c[j] != '\0') {
                 add_right_leaf(tmp_leafs_array[i], c[j]);
-                printf("add leaft leaf %c on depth leavel %ld\n", tmp_leafs_array[i] -> right -> data, tree_depth);
+                //printf("add leaft leaf %c on depth leavel %ld\n", tmp_leafs_array[i] -> right -> data, tree_depth);
                 tmp2_leafs_array[tmp2] = tmp_leafs_array[i] -> right;
                 ++tmp2;
                 ++j;
@@ -57,6 +61,9 @@ void fill_tree(struct Tree* root, char c[]) {
         tmp1 *= 2;
         tree_depth -= 1;  
     }
+
+    free(tmp_leafs_array);
+    free(tmp2_leafs_array);
 
     return;
 }

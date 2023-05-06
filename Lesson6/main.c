@@ -12,4 +12,7 @@ int main() {
 
     print_tree(Root);
 
+    free_tree(Root);
+
+    return 0;
 }
