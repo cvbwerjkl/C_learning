@@ -7,3 +7,6 @@
 *.o
 *.so
 *.out
+*.gz
+/bin
+

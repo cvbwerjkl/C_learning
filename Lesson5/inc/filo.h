@@ -18,7 +18,7 @@ struct Item {
 /*adding element at the end of stack*/
 void push(char c);
 
-/*extract last element from stack with check is stack is empty*/
+/*extract last element from stack with check is stack empty*/
 uint8_t pop(char* c);
 
 #endif /* FILO_H_ */
