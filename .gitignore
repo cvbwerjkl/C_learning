@@ -8,5 +8,5 @@
 *.so
 *.out
 *.gz
-./bin
+bin/
 
